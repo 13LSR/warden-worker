@@ -1,6 +1,7 @@
 use tower_http::cors::{Any, CorsLayer};
 use tower_service::Service;
 use worker::*;
+use http as _http;
 
 mod auth;
 mod crypto;
@@ -11,11 +12,11 @@ mod models;
 mod router;
 
 #[event(fetch)]
-pub async fn main(
+pub async fn fetch(
     req: HttpRequest,
     env: Env,
     _ctx: Context,
-) -> Result<axum::http::Response<axum::body::Body>> {
+) -> Result<_http::Response<axum::body::Body>> {
     // Set up logging
     console_error_panic_hook::set_once();
     let _ = console_log::init_with_level(log::Level::Debug);
