@@ -1,7 +1,7 @@
 use tower_http::cors::{Any, CorsLayer};
 use tower_service::Service;
 use worker::*;
-use http as _http;
+use axum::http as _http;
 
 mod auth;
 mod crypto;
